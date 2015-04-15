@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib import admin
 import django.contrib.auth.models
 
 
@@ -16,6 +15,9 @@ class Pet(models.Model):
     # and we set blank=True to lazy people people to have empty descriptions.
     description = models.CharField(max_length=1024, default='', blank=True)
 
+    def __unicode__(self):
+        return self.name
+
 class Update(models.Model):
     pub_date = models.DateTimeField(
         # Use current time on obj creation.
@@ -24,5 +26,5 @@ class Update(models.Model):
     pet = models.ForeignKey(Pet)
     text = models.CharField(max_length=140)
 
-admin.site.register(Update)
-admin.site.register(Pet)
+    def __unicode__(self):
+        return self.text

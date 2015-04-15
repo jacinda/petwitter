@@ -1,5 +1,8 @@
 from django.conf.urls import patterns, url
 
+from django.contrib import admin
+admin.autodiscover()
+
 
 from communication_app import views
 
